@@ -1,0 +1,47 @@
+@media only screen and (min-width: 1280px) {
+  .listAuthNav {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.linkAuthNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  height: 50px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.linkLogin {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  width: 119px;
+  color: #fff;
+  background-color: #f6b83d;
+  transition: all 250ms linear;
+}
+
+.linkRegister {
+  width: 149px;
+  border: 1px solid #fff4df;
+  background-color: #fff4df;
+  color: #f6b83d;
+  transition: all 250ms linear;
+}
+
+.linkLogin:hover,
+.linkLogin:focus {
+  background-color: #fff4df;
+  color: #f6b83d;
+}
+
+.linkRegister:hover,
+.linkRegister:focus {
+  background-color: #fbe7c1;
+  color: #f6b83d;
+}

@@ -1,0 +1,19 @@
+.input {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px;
+  height: 42px;
+  width: 100%;
+}
+
+.input:focus {
+  border: 1px solid #f6b83d;
+}
+
+/* .valid {
+  border: 1px solid #08aa83;
+} */
+
+.invalid {
+  border: 1px solid #ef2447;
+}

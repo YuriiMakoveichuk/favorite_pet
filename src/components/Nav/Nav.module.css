@@ -1,0 +1,41 @@
+.listNav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media only screen and (min-width: 1280px) {
+  .listNav {
+    flex-direction: row;
+  }
+}
+
+.link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 15px 20px;
+  width: 119px;
+  height: 48px;
+}
+
+@media only screen and (min-width: 768px) {
+  .link {
+    width: 120px;
+    height: 50px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .link {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    transition: all 250ms linear;
+  }
+}
+
+.link:hover,
+.link:focus,
+.active {
+  border: 1px solid #f6b83d;
+}
