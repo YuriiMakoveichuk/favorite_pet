@@ -1,11 +1,14 @@
 // import React from 'react'
 
 import FormLogin from "../../components/FormLogin/FormLogin.jsx";
+import Container from "../../shared/Container/Container.jsx";
 
 const LoginPage = () => {
   return (
     <>
-      <FormLogin />
+      <Container>
+        <FormLogin />
+      </Container>
     </>
   );
 };

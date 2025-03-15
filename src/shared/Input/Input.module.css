@@ -1,19 +1,100 @@
+.boxInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .input {
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: none;
+  outline: 1px solid rgba(38, 38, 38, 0.15);
   border-radius: 30px;
   padding: 12px;
   height: 42px;
   width: 100%;
+  @media only screen and (min-width: 768px) {
+    padding: 16px;
+    height: 52px;
+  }
+
+  @media only screen and (min-width: 1280px) {
+  }
+}
+
+.input::placeholder {
+  line-height: 1.28571;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+  @media only screen and (min-width: 768px) {
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+  }
+  @media only screen and (min-width: 1280px) {
+  }
 }
 
 .input:focus {
-  border: 1px solid #f6b83d;
+  border: none;
+  outline: 1px solid #f6b83d;
 }
 
-/* .valid {
-  border: 1px solid #08aa83;
-} */
+.valid {
+  border: none;
+  outline: 1px solid #08aa83;
+}
 
 .invalid {
-  border: 1px solid #ef2447;
+  border: none;
+  outline: 1px solid #ef2447;
+}
+
+.iconInput {
+  position: absolute;
+  right: 15px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.svgInput {
+  position: absolute;
+  right: 15px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.svgInputValid {
+  stroke: #08aa83;
+}
+
+.svgInputInValid {
+  stroke: #ef2447;
+}
+
+.svgInputIconButton {
+  right: 38px;
+}
+
+.btnInputPass {
+  position: absolute;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: inherit;
+  padding: 0;
+  stroke: #f6b83d;
+}
+
+.error {
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: #ef2447;
 }

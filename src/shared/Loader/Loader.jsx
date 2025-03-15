@@ -1,4 +1,3 @@
-// import Container from "./Container/Container.jsx";
 import Container from "../Container/Container.jsx";
 import css from "./Loader.module.css";
 

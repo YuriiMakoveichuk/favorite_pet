@@ -31,13 +31,12 @@
   border: 1px solid #fff4df;
   background-color: #fff4df;
   color: #f6b83d;
-  transition: all 250ms linear;
+  transition: background-color 250ms linear;
 }
 
 .linkLogin:hover,
 .linkLogin:focus {
-  background-color: #fff4df;
-  color: #f6b83d;
+  background-color: #f9b020;
 }
 
 .linkRegister:hover,

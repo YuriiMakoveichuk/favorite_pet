@@ -1,3 +1,109 @@
-.formLogin {
-  width: 500px;
+.boxForm {
+  padding: 60px 20px;
+  border-radius: 30px;
+  width: 335px;
+  background-color: #fff;
+  @media only screen and (min-width: 768px) {
+    border-radius: 60px;
+    padding: 71px 140px;
+    width: 704px;
+  }
+  @media only screen and (min-width: 1280px) {
+    width: 592px;
+    padding: 118px 84px;
+  }
+}
+
+.titleForm {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+  @media only screen and (min-width: 768px) {
+    font-size: 54px;
+    margin-bottom: 16px;
+  }
+}
+
+.textForm {
+  margin-bottom: 24px;
+  letter-spacing: normal;
+  @media only screen and (min-width: 768px) {
+    font-size: 18px;
+    line-height: 1.22222;
+    margin-bottom: 32px;
+  }
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+  @media only screen and (min-width: 768px) {
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+}
+
+.boxInputPass {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.btnInputPass {
+  position: absolute;
+  right: 15px;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnForm {
+  border-radius: 30px;
+  padding: 12px;
+  width: 100%;
+  height: 42px;
+  background-color: #f6b83d;
+  border: inherit;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: background-color 250ms linear;
+  margin-bottom: 16px;
+  @media only screen and (min-width: 768px) {
+    padding: 16px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+}
+
+.btnForm:hover,
+.btnForm:focus {
+  background-color: #f9b020;
+}
+
+.textLink {
+  line-height: 1.42857;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.5);
+  text-align: center;
+}
+
+.linkForm {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #f6b83d;
+  transition: color 250ms linear;
+}
+
+.linkForm:focus,
+.linkForm:hover {
+  color: #f9b020;
 }
