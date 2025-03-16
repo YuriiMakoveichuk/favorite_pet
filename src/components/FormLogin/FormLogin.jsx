@@ -1,34 +1,24 @@
 import { FormProvider, useForm } from "react-hook-form";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import Input from "../../shared/Input/Input.jsx";
-import css from "./FormLogin.module.css";
-import { selectAuthLoading } from "../../redux/auth/selectors.js";
-import { apiLogin } from "../../redux/auth/operations.js";
-import { useState } from "react";
-// import sprite from "../../assets/sprite.svg";
 
-const schema = yup.object().shape({
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(
-      /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      "Email is not valid"
-    ),
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(7, "Password must be at least 7 characters"),
-});
+import Input from "../../shared/Input/Input.jsx";
+import { selectAuthLoading } from "../../redux/auth/selectors.js";
+
+import { apiLogin } from "../../redux/auth/operations.js";
+
+import { validationSchemaFormLogin } from "../../validation/validationSchemaFormLogin.js";
+
+import css from "./FormLogin.module.css";
 
 const FormLogin = () => {
   const methods = useForm({
-    resolver: yupResolver(schema),
-    // mode: "onBlur",
+    resolver: yupResolver(validationSchemaFormLogin),
+    mode: "onBlur",
   });
 
   const { handleSubmit, control, formState } = methods;

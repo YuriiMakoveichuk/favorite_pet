@@ -1,8 +1,10 @@
 import clsx from "clsx";
-import css from "./Input.module.css";
+import { useState } from "react";
+import { useController } from "react-hook-form";
+
 import sprite from "../../assets/sprite.svg";
 
-import { useController, useFormContext } from "react-hook-form";
+import css from "./Input.module.css";
 
 const Input = ({
   name,
@@ -12,7 +14,7 @@ const Input = ({
   togglePasswordVisibility,
   ...props
 }) => {
-  const { trigger } = useFormContext();
+  const [isTouched, setIsTouched] = useState(false);
   const {
     field,
     fieldState: { error },
@@ -21,7 +23,10 @@ const Input = ({
     control,
   });
 
-  console.log(field);
+  const handleBlur = () => {
+    setIsTouched(true);
+    field.onBlur();
+  };
 
   return (
     <>
@@ -30,48 +35,46 @@ const Input = ({
           <input
             {...field}
             {...props}
-            onChange={(e) => {
-              field.onChange(e);
-              trigger(`${name}`);
-            }}
             className={clsx(
               css.input,
               error ? css.invalid : field.value ? css.valid : ""
             )}
+            onBlur={handleBlur}
           />
-          {error ? (
-            <svg
-              className={clsx(
-                css.svgInput,
-                iconButton && css.svgInputIconButton,
-                error
-                  ? css.svgInputInValid
-                  : field.value
-                  ? css.svgInputValid
-                  : ""
-              )}
-              width={18}
-              height={18}
-            >
-              <use href={`${sprite}#icon-cross-small`}></use>
-            </svg>
-          ) : (
-            <svg
-              className={clsx(
-                css.svgInput,
-                iconButton && css.svgInputIconButton,
-                error
-                  ? css.svgInputInValid
-                  : field.value
-                  ? css.svgInputValid
-                  : ""
-              )}
-              width={18}
-              height={18}
-            >
-              <use href={`${sprite}#icon-check`}></use>
-            </svg>
-          )}
+          {isTouched &&
+            (error ? (
+              <svg
+                className={clsx(
+                  css.svgInput,
+                  iconButton && css.svgInputIconButton,
+                  error
+                    ? css.svgInputInValid
+                    : field.value
+                    ? css.svgInputValid
+                    : ""
+                )}
+                width={18}
+                height={18}
+              >
+                <use href={`${sprite}#icon-cross-small`}></use>
+              </svg>
+            ) : (
+              <svg
+                className={clsx(
+                  css.svgInput,
+                  iconButton && css.svgInputIconButton,
+                  error
+                    ? css.svgInputInValid
+                    : field.value
+                    ? css.svgInputValid
+                    : ""
+                )}
+                width={18}
+                height={18}
+              >
+                <use href={`${sprite}#icon-check`}></use>
+              </svg>
+            ))}
           {iconButton && (
             <button
               type="button"

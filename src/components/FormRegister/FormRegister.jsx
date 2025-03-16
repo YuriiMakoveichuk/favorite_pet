@@ -1,35 +1,19 @@
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { apiRegister } from "../../redux/auth/operations.js";
 import { selectAuthLoading } from "../../redux/auth/selectors.js";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../../shared/Input/Input.jsx";
+import { validationSchemaFormLogin } from "../../validation/validationSchemaFormLogin.js";
 
-const schema = yup.object().shape({
-  name: yup.string(),
-  email: yup
-    .string()
-    .required("Email is required")
-    .matches(
-      /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
-      "Email is not valid"
-    ),
-  password: yup
-    .string()
-    .required("Password is required")
-    .min(7, "Password must be at least 7 characters"),
-  repeatPassword: yup
-    .string()
-    .required("Repeat password is required")
-    .min(7, "Repeat password must be at least 7 characters"),
-});
+import css from "./FormRegister.module.css";
+import { useState } from "react";
 
 const FormRegister = () => {
   const methods = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(validationSchemaFormLogin),
     mode: "onBlur",
   });
 
@@ -38,8 +22,14 @@ const FormRegister = () => {
   const navigate = useNavigate();
   const isLoading = useSelector(selectAuthLoading);
 
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible((prevState) => !prevState);
+  };
+
   const onSubmit = async (values) => {
-    const { repeatPassword, ...data } = values; // eslint-disable-line no-unused-vars
+    const { confirmPassword, ...data } = values; // eslint-disable-line no-unused-vars
     const response = await dispatch(apiRegister(data));
     if (!response.error) {
       toast.success("Registration successful!");
@@ -51,39 +41,57 @@ const FormRegister = () => {
         toast.error("User already exists. Redirecting to login...");
       } else {
         toast.error("Registration failed. Please try again.");
-        navigate("/login");
       }
     }
   };
 
   return (
     <>
-      <FormProvider {...methods}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Input name="name" control={control} placeholder="Name" />
-          <Input name="email" control={control} placeholder="Email" />
-          <Input
-            name="password"
-            control={control}
-            placeholder="Password"
-            type="password"
-          />
-          <Input
-            name="repeatPassword"
-            control={control}
-            placeholder="repeatPassword"
-            type="repeatPassword"
-          />
-          <button type="submit" disabled={isLoading}>
-            Register
-          </button>
-          {formState.errors.server && (
-            <div className="notification">
-              {formState.errors.server.message}
+      <div className={css.boxForm}>
+        <h2 className={css.titleForm}>Registration</h2>
+        <p className={css.textForm}>
+          Thank you for your interest in our platform.
+        </p>
+        <FormProvider {...methods}>
+          <form className={css.formRegister} onSubmit={handleSubmit(onSubmit)}>
+            <div className={css.boxInput}>
+              <Input name="name" control={control} placeholder="Name" />
+              <Input name="email" control={control} placeholder="Email" />
+              <Input
+                name="password"
+                control={control}
+                placeholder="Password"
+                iconButton={"icon"}
+                type={isPasswordVisible ? "text" : "password"}
+                isPasswordVisible={isPasswordVisible}
+                togglePasswordVisibility={togglePasswordVisibility}
+              />
+              <Input
+                name="confirmPassword"
+                control={control}
+                placeholder="Confirm password"
+                iconButton={"icon"}
+                type={isPasswordVisible ? "text" : "password"}
+                isPasswordVisible={isPasswordVisible}
+                togglePasswordVisibility={togglePasswordVisibility}
+              />
             </div>
-          )}
-        </form>
-      </FormProvider>
+            <button
+              className={css.btnForm}
+              type="submit"
+              disabled={!formState.isValid || isLoading}
+            >
+              Register
+            </button>
+            <p className={css.textLink}>
+              Don’t have an account?&nbsp;
+              <Link className={css.linkForm} to="/login">
+                Register
+              </Link>
+            </p>
+          </form>
+        </FormProvider>
+      </div>
     </>
   );
 };

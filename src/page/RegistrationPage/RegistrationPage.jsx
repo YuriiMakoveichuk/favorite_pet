@@ -1,11 +1,14 @@
 // import React from 'react'
 
 import FormRegister from "../../components/FormRegister/FormRegister.jsx";
+import Container from "../../shared/Container/Container.jsx";
 
 const RegistrationPage = () => {
   return (
     <>
-      <FormRegister />
+      <Container>
+        <FormRegister />
+      </Container>
     </>
   );
 };
