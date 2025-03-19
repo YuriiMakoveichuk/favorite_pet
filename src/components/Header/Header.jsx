@@ -16,6 +16,7 @@ const Header = () => {
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
   const isModalOpen = useSelector(selectIsOpenModal);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onCloseModal = useCallback(() => {
     dispatch(closeModal());
   });

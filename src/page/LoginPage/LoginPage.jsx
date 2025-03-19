@@ -10,10 +10,11 @@ import loginTablet2x from "../../assets/images/login/dog_tablet@2x.png";
 import loginDesktop from "../../assets/images/login/dog_desktop.png";
 import loginDesktop2x from "../../assets/images/login/dog_desktop@2x.png";
 import Section from "../../shared/Section/Section.jsx";
-import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
+// import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
 
 import dog from "../../assets/images/login/dog.png";
 import dog2x from "../../assets/images/login/dog@2x.png";
+import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
 
 const data = {
   title: "Rich",
