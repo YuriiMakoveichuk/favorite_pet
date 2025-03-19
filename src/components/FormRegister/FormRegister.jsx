@@ -23,9 +23,14 @@ const FormRegister = () => {
   const isLoading = useSelector(selectAuthLoading);
 
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const [isConfirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible((prevState) => !prevState);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setConfirmPasswordVisible((prevState) => !prevState);
   };
 
   const onSubmit = async (values) => {
@@ -71,9 +76,9 @@ const FormRegister = () => {
                 control={control}
                 placeholder="Confirm password"
                 iconButton={"icon"}
-                type={isPasswordVisible ? "text" : "password"}
-                isPasswordVisible={isPasswordVisible}
-                togglePasswordVisibility={togglePasswordVisibility}
+                type={isConfirmPasswordVisible ? "text" : "password"}
+                isPasswordVisible={isConfirmPasswordVisible}
+                togglePasswordVisibility={toggleConfirmPasswordVisibility}
               />
             </div>
             <button

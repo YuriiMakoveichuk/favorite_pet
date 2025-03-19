@@ -1,15 +1,57 @@
-@media only screen and (min-width: 1280px) {
-  .header {
+.header {
+  padding-top: 28px;
+  padding-bottom: 20px;
+  @media only screen and (min-width: 1280px) {
     padding-top: 32px;
     padding-bottom: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
   }
+}
 
-  .nav {
+.containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media only screen and (min-width: 1280px) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
+
+.btnMenu {
+  padding: 0;
+  background-color: inherit;
+  border: none;
+  stroke: #262626;
+  @media only screen and (min-width: 1280px) {
+    display: none;
+  }
+}
+
+.nav {
+  @media only screen and (max-width: 1279px) {
+    display: none;
+  }
+  @media only screen and (min-width: 1280px) {
     display: flex;
     align-items: center;
     gap: 142px;
   }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.modal {
+  position: absolute;
+  width: 218px;
+  height: 100%;
+  right: 0;
+  background-color: #f6b83d;
+  overflow-y: auto;
 }

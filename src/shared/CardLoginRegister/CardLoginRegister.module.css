@@ -1,0 +1,55 @@
+.boxCard {
+  @media only screen and (max-width: 767.8px) {
+    display: none;
+  }
+  @media only screen and (min-width: 768px) {
+    position: absolute;
+    display: flex;
+    gap: 8px;
+    padding: 19px 16px;
+    border-radius: 20px;
+    width: 294px;
+    background-color: #fff;
+    left: 32px;
+    bottom: 32px;
+  }
+  @media only screen and (min-width: 1280px) {
+    left: 61px;
+    bottom: 97px;
+  }
+}
+
+.boxImg {
+  width: 60px;
+  height: 60px;
+}
+
+.boxCardTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.cardTitle {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+}
+
+.cardText {
+  font-size: 12px;
+  line-height: 1.16667;
+}
+
+.spanCardText {
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.cardParagraph {
+  font-size: 12px;
+  line-height: 1.16667;
+  color: rgba(38, 38, 38, 0.8);
+}

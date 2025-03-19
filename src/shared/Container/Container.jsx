@@ -1,9 +1,10 @@
+import clsx from "clsx";
 import css from "./Container.module.css";
 
-const Container = ({ children }) => {
+const Container = ({ children, className = "" }) => {
   return (
     <>
-      <div className={css.container}>{children}</div>
+      <div className={clsx(css.container, className)}>{children}</div>
     </>
   );
 };
