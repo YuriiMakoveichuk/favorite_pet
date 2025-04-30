@@ -14,7 +14,7 @@ import Section from "../../shared/Section/Section.jsx";
 
 import dog from "../../assets/images/login/dog.png";
 import dog2x from "../../assets/images/login/dog@2x.png";
-import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
+import CardLoginRegister from "../../shared/CardLoginRegister/CardLoginRegister.jsx";
 
 const data = {
   title: "Rich",

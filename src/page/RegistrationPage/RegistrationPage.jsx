@@ -13,7 +13,8 @@ import registerDesktop2x from "../../assets/images/register/cat_desktop@2x.png";
 
 import cat from "../../assets/images/register/cat.png";
 import cat2x from "../../assets/images/register/cat@2x.png";
-import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
+import CardLoginRegister from "../../shared/CardLoginRegister/CardLoginRegister.jsx";
+// import CardLoginRegister from "../../shared/cardLoginRegister/cardLoginRegister.jsx";
 
 const data = {
   title: "Jack",
