@@ -10,6 +10,7 @@ import Container from "../../shared/Container/Container.jsx";
 import sprite from "../../assets/sprite.svg";
 import { closeModal, openModal, selectIsOpenModal } from "../../redux/modal.js";
 import { useCallback, useEffect } from "react";
+import UserNav from "../UserNav/UserNav.jsx";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Header = () => {
 
           <nav className={css.nav}>
             <Nav />
-            {isLoggedIn ? <h2>UserNav</h2> : <AuthNav />}
+            {isLoggedIn ? <UserNav /> : <AuthNav />}
           </nav>
           <button className={css.btnMenu} onClick={handleOpenModal}>
             <svg width={36} height={36}>
@@ -73,7 +74,7 @@ const Header = () => {
             <nav className={css.navModal}>
               <Nav onClick={onCloseModal} />
               {isLoggedIn ? (
-                <h2>UserNav</h2>
+                <UserNav onClick={onCloseModal} />
               ) : (
                 <AuthNav onClick={onCloseModal} />
               )}

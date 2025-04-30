@@ -67,10 +67,11 @@ export const apiIsRefreshing = createAsyncThunk(
 );
 
 export const apiLogout = createAsyncThunk(
-  "auth/logout",
+  "auth/signout",
   async (_, thunkApi) => {
     try {
       await instance.post("users/signout");
+      console.log("signout successful");
       setAuthHeaders("");
       return;
     } catch (error) {

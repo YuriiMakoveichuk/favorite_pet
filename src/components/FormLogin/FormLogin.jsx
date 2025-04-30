@@ -38,7 +38,7 @@ const FormLogin = () => {
       console.log("Login response:", response);
 
       toast.success("Login successful!");
-      navigate("/home");
+      navigate("/profile");
       methods.reset();
     } catch (error) {
       if (error === "Email or password invalid") {
