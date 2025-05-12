@@ -70,9 +70,17 @@ export const apiLogout = createAsyncThunk(
   "auth/signout",
   async (_, thunkApi) => {
     try {
-      await instance.post("users/signout");
-      console.log("signout successful");
-      setAuthHeaders("");
+      const state = thunkApi.getState();
+      const token = state.auth.token;
+
+      if (!token) {
+        return thunkApi.rejectWithValue("Missing token");
+      }
+
+      await instance.post("users/signout", null, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setAuthHeaders(null);
       return;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

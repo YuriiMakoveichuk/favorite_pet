@@ -1,7 +1,14 @@
-@media only screen and (min-width: 1280px) {
+.listAuthNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@media only screen and (min-width: 768px) {
   .listAuthNav {
-    display: flex;
-    gap: 8px;
+    flex-direction: row;
   }
 }
 

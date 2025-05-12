@@ -54,10 +54,6 @@ img {
   overflow: hidden;
 }
 
-html {
-  overflow-y: scroll;
-}
-
 html::before {
   content: "";
   display: block;
@@ -68,5 +64,4 @@ html::before {
 
 .no-scroll {
   overflow: hidden;
-  padding-right: 10px;
 }

@@ -11,9 +11,13 @@ import sprite from "../../assets/sprite.svg";
 import { closeModal, openModal, selectIsOpenModal } from "../../redux/modal.js";
 import { useCallback, useEffect } from "react";
 import UserNav from "../UserNav/UserNav.jsx";
+import { useLocation } from "react-router-dom";
+import clsx from "clsx";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const isLoggedIn = useSelector(selectAuthIsLoggedIn);
   const isModalOpen = useSelector(selectIsOpenModal);
 
@@ -48,15 +52,37 @@ const Header = () => {
 
   return (
     <>
-      <header className={css.header}>
-        <Container className={css.containerHeader}>
+      <header
+        className={location.pathname === "/home" ? css.headerHome : css.header}
+      >
+        <Container
+          className={clsx(
+            css.containerHeader,
+            location.pathname === "/home" && css.containerHeaderHome
+          )}
+        >
           <Logo />
 
           <nav className={css.nav}>
             <Nav />
             {isLoggedIn ? <UserNav /> : <AuthNav />}
           </nav>
-          <button className={css.btnMenu} onClick={handleOpenModal}>
+          <div className={css.tabletNav}>
+            {!isModalOpen && location.pathname !== "/home" && (
+              <div className={css.loginRegister}>
+                {isLoggedIn ? <UserNav /> : <AuthNav onClick={onCloseModal} />}
+              </div>
+            )}
+            <button className={css.btnMenu} onClick={handleOpenModal}>
+              <svg width={36} height={36}>
+                <use href={`${sprite}#icon-menu`}></use>
+              </svg>
+            </button>
+          </div>
+          <button
+            className={clsx(css.btnMenu, css.btnMenuTablet)}
+            onClick={handleOpenModal}
+          >
             <svg width={36} height={36}>
               <use href={`${sprite}#icon-menu`}></use>
             </svg>
@@ -66,18 +92,22 @@ const Header = () => {
       {isModalOpen && (
         <div className={css.backdrop} onClick={handleBackDropClick}>
           <div className={css.modal}>
-            <button type="button" className={css.btn} onClick={onCloseModal}>
-              <svg className={css.svg} width={24} height={24}>
+            <button
+              type="button"
+              className={css.btnModalClosed}
+              onClick={onCloseModal}
+            >
+              <svg className={css.svgModalClosed} width={32} height={32}>
                 <use href={`${sprite}#icon-x`}></use>
               </svg>
             </button>
-            <nav className={css.navModal}>
-              <Nav onClick={onCloseModal} />
-              {isLoggedIn ? (
-                <UserNav onClick={onCloseModal} />
-              ) : (
-                <AuthNav onClick={onCloseModal} />
-              )}
+            <nav className={css.navModalMenu}>
+              <div>
+                <Nav onClick={onCloseModal} />
+              </div>
+              <div>
+                {isLoggedIn ? <UserNav /> : <AuthNav onClick={onCloseModal} />}
+              </div>
             </nav>
           </div>
         </div>
